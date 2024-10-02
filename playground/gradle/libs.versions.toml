@@ -1,0 +1,13 @@
+[versions]
+springBoot = "3.3.4"
+sonarqube = "5.1.0.4882"
+
+[libraries]
+# project dependencies
+
+
+[bundles]
+
+[plugins]
+springBoot = { id = "org.springframework.boot",  version.ref = "springBoot" }
+sonarqube = { id = "org.sonarqube",  version.ref = "sonarqube" }
