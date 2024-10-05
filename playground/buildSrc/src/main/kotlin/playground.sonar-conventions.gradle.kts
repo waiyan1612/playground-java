@@ -1,5 +1,13 @@
 plugins {
+    java
+    jacoco
     id("org.sonarqube")
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required = true
+    }
 }
 
 sonar {

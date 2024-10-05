@@ -1,12 +1,25 @@
 [versions]
 springBoot = "3.3.4"
 sonarqube = "5.1.0.4882"
+junit = "5.11.2"
+mockito = "5.14.1"
 
 [libraries]
-# project dependencies
 
+spring-boot-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-api = { module = "org.junit.jupiter:junit-jupiter-api"}
+junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine"}
+
+mockito-bom = { module = "org.mockito:mockito-bom", version.ref = "mockito" }
+mockito-core = { module = "org.mockito:mockito-core" }
+mockito-junit = { module = "org.mockito:mockito-junit-jupiter" }
 
 [bundles]
+
 
 [plugins]
 springBoot = { id = "org.springframework.boot",  version.ref = "springBoot" }

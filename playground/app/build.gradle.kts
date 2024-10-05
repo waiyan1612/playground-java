@@ -2,15 +2,16 @@ plugins {
     // From buildSrc
     id("playground.java-conventions")
     id("playground.spring-conventions")
+    id("playground.testing-conventions")
 }
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation(project(":lib"))
+    implementation(libs.spring.boot.actuator)
+    implementation(libs.spring.boot.web)
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(libs.spring.boot.test)
 }

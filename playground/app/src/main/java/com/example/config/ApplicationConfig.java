@@ -1,6 +1,7 @@
 package com.example.config;
 
-import com.example.HelloService;
+import com.example.GreetingService;
+import com.example.NoOpService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,7 +9,12 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfig {
 
     @Bean
-    public HelloService helloService () {
-        return new HelloService();
+    public NoOpService noOpService() {
+        return new NoOpService();
+    }
+
+    @Bean
+    public GreetingService greetingService() {
+        return new GreetingService(noOpService());
     }
 }

@@ -9,7 +9,6 @@ A playground to quickly run java POCs.
 |__ playground      -> gradle multi-project
   |__ app           -> spring boot app
   |__ buildSrc      -> defines conventions which are reused in the `plugins` of subprojects
-  |__ db            -> flyway migration scripts
   |__ lib           -> standalone module built as a lib release 
 ```
 
@@ -34,7 +33,7 @@ cd playground
   | `java-conventions`    | Configure JDK and dependency locking   | `app`, `lib` |
   | `sonar-conventions`   | Configure SonarQube.                   | `lib`        |
   | `spring-conventions`  | Configure SpringBoot.                  | `app`        |
-  | `testing-conventions` | Configure JUnit.                       |              |
+  | `testing-conventions` | Configure JUnit.                       | `app`, `lib` |
 
 
 ### Dependency Locking
@@ -44,18 +43,19 @@ STRICT Dependency locking is enabled in [java-conventions](playground/buildSrc/s
 ```bash
 ./gradlew app:dependencies --write-locks
 ```
+### Testing
+- `app` uses Spring Boot test.
+- `lib` uses traditional JUnit and Mockito. It has also been configured with the sonar plugin. 
 
-### Sonar Scanner
-
-#### Prerequisite
-Start the sonarqube docker containers via compose. The compose file has a helper service to reset the `admin` password and create the `playground` project at http://localhost:9000/dashboard?id=playground.
-```bash
-docker compose -f docker/docker-compose.yaml up --build
-```
-For simplicity, we will use `sonar.login` and `sonar.password` to authenticate.
-```bash 
-./gradlew lib:sonar
-```
+#### Sonar Scanner
+1. Start the sonarqube docker containers via compose. The compose file has a helper service to reset the `admin` password and create the `playground` project at http://localhost:9000/dashboard?id=playground.
+    ```bash
+    docker compose -f docker/docker-compose.yaml up --build
+    ```
+2. For simplicity, we will use `sonar.login` and `sonar.password` to authenticate.
+    ```bash 
+    ./gradlew lib:test lib:jacocoTestReport lib:sonar
+    ```
 
 ## Refs
 - https://github.com/android/nowinandroid
