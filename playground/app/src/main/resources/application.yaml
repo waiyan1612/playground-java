@@ -8,3 +8,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+
+logging:
+  config: classpath:log4j2-local.xml
+#  config: classpath:log4j2.xml

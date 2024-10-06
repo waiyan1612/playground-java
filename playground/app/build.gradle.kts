@@ -15,6 +15,15 @@ dependencies {
     implementation(libs.spring.boot.web)
     implementation(libs.spring.boot.data.jpa)
 
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
+    modules {
+        module("org.springframework.boot:spring-boot-starter-logging") {
+            replacedBy("org.springframework.boot:spring-boot-starter-log4j2", "Use Log4j2 instead of Logback")
+        }
+    }
+    // For JSON layout
+    runtimeOnly("org.apache.logging.log4j:log4j-layout-template-json")
+
     implementation(libs.mapstruct)
     annotationProcessor(libs.mapstruct.processor)
 

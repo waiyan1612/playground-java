@@ -62,6 +62,11 @@ Clean up.
 FLYWAY_CLEAN_DISABLED=false ./gradlew app:flywayClean
 ```
 
+### Logging
+We are replacing the `logback` in `app` with `log4j2`. The logging properties are defined in `logging.config` in [application.yaml](playground/app/src/main/resources/application.yaml).
+- `log4j2.xml` - uses `JsonTemplateLayout`.
+- `log4j-local.xml` - uses `PatternLayout`.
+
 ### Dependency Locking
 
 STRICT Dependency locking is enabled
