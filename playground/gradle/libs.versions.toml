@@ -1,14 +1,20 @@
 [versions]
 springBoot = "3.3.4"
+postgres = "42.7.4"
+mapstruct = "1.6.2"
 sonarqube = "5.1.0.4882"
+flyway = "10.19.0"
 junit = "5.11.2"
 mockito = "5.14.1"
 
 [libraries]
 
 spring-boot-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
 spring-boot-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+
+postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
 
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api"}
@@ -18,9 +24,16 @@ mockito-bom = { module = "org.mockito:mockito-bom", version.ref = "mockito" }
 mockito-core = { module = "org.mockito:mockito-core" }
 mockito-junit = { module = "org.mockito:mockito-junit-jupiter" }
 
+mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
+mapstruct-processor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
+
+## For Flyway Plugin
+flyway-postgres = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
+
 [bundles]
 
 
 [plugins]
 springBoot = { id = "org.springframework.boot",  version.ref = "springBoot" }
 sonarqube = { id = "org.sonarqube",  version.ref = "sonarqube" }
+flyway = { id = "org.flywaydb.flyway",  version.ref = "flyway" }

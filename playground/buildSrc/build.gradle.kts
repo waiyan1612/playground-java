@@ -12,6 +12,11 @@ fun Provider<PluginDependency>.text(): String {
 dependencies {
     implementation(buildSrcLibs.plugins.springBoot.text())
     implementation(buildSrcLibs.plugins.sonarqube.text())
+
+    // Runtime libs for Flyway
+    implementation(buildSrcLibs.plugins.flyway.text())
+    implementation(buildSrcLibs.flyway.postgres)
+    implementation(buildSrcLibs.postgres)
 }
 
 repositories {

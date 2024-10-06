@@ -32,7 +32,7 @@ configurations {
 tasks.compileJava {
     options.compilerArgs.addAll(
         listOf(
-            "-Xlint:all", // Enables all recommended warnings.
+            "-Xlint:all,-processing", // Enables all recommended warnings except processing (See https://github.com/spring-projects/spring-boot/issues/6421)
             "-Werror" // Terminates compilation when warnings occur.
         )
     )

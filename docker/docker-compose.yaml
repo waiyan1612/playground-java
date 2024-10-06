@@ -7,6 +7,8 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
+      - MIGRATION_USER=flyway
+      - MIGRATION_PASSWORD=flyway
       - APP_DB=playground
       - APP_USER=application
       - APP_PASSWORD=application
