@@ -7,21 +7,26 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.w3c.dom.Text;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class HelloServiceTest {
+class HiServiceTest {
 
     @InjectMocks
-    HelloService helloService;
+    HiService hiService;
 
     @Mock
     GreetingService greetingService;
 
+    @Mock
+    TextFormatterService textFormatterService;
+
     @Test
     void testGreet() {
-        Mockito.when(greetingService.greet()).thenReturn("Hello");
-        assertEquals("Hello from Spring", helloService.greet());
+        Mockito.when(greetingService.greet()).thenReturn("Bye");
+        Mockito.when(textFormatterService.strikeThrough("Bye")).thenReturn("B̶y̶e̶");
+        assertEquals("B̶y̶e̶ Hi from Spring", hiService.greet());
     }
 }
