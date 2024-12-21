@@ -11,17 +11,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class HelloServiceTest {
+class HiServiceTest {
 
     @InjectMocks
-    HelloService helloService;
+    HiService hiService;
 
     @Mock
     GreetingService greetingService;
 
     @Test
     void testGreet() {
-        Mockito.when(greetingService.greet()).thenReturn("Hello");
-        assertEquals("Hello from Spring", helloService.greet());
+        Mockito.when(greetingService.greet()).thenReturn("Bye");
+        assertEquals("B̶y̶e̶ Hi from Spring", hiService.greet());
     }
 }

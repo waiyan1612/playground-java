@@ -23,15 +23,10 @@ public class HelloController {
         this.helloService = helloService;
     }
 
-    @GetMapping
-    public String get() {
-        return helloService.greet();
-    }
-
     @GetMapping("/{lang}")
     public HelloDto getByLanguage(@PathVariable(value = "lang") String lang) {
         log.info("Received greeting request for {}", lang);
-        HelloDto helloDto = helloService.greetByLanguage(lang);
+        HelloDto helloDto = helloService.greet(lang);
         log.info("Greeting in {} is {}", helloDto.getLanguage(), helloDto.getMessage());
         return helloDto;
     }

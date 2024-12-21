@@ -1,11 +1,11 @@
 package com.example.controller;
 
-import com.example.service.HelloService;
+import com.example.service.HiService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.BDDMockito.given;
@@ -15,19 +15,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class HelloControllerTest {
+class HiControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
-    @MockBean
-    private HelloService helloService;
+    @MockitoBean
+    private HiService hiService;
 
     @Test
-    void testGetHelloController() throws Exception {
+    void testGetHiController() throws Exception {
 
-        given(helloService.greet()).willReturn("hi hi");
-        mvc.perform(get("/hello"))
+        given(hiService.greet()).willReturn("hi hi");
+        mvc.perform(get("/hi"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("hi hi"))
         ;
