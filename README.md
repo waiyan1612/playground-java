@@ -18,7 +18,7 @@ A playground to quickly run java POCs.
 Launch the postgres and sonarqube containers.
 
 ```bash
- docker compose -f docker/docker-compose.yaml up --build
+ docker compose -f docker/docker-compose.yaml -f docker/docker-compose-sonar.yaml up --build
 ```
 
 Build the jars.
@@ -65,7 +65,8 @@ FLYWAY_CLEAN_DISABLED=false ./gradlew app:flywayClean
 ### Logging
 We are replacing the `logback` in `app` with `log4j2`. The logging properties are defined in `logging.config` in [application.yaml](playground/app/src/main/resources/application.yaml).
 - `log4j2.xml` - uses `JsonTemplateLayout`.
-- `log4j-local.xml` - uses `PatternLayout`.
+- `log4j2-local.xml` - uses `PatternLayout`.
+This is configured in [application.yaml](playground/app/src/main/resources/application.yaml).
 
 ### Dependency Locking
 
@@ -84,6 +85,10 @@ overridden in the subproject ([example](playground/lib/build.gradle.kts)).
 - `app` uses Spring Boot test.`@SpringBootTest` will launch the entire app while `@ExtendWith(MockitoExtension.class)`
   will only inject the mocks and is more lightweight.
 - `lib` uses traditional JUnit and Mockito. It has also been configured with the sonar plugin.
+
+### API Documentation
+
+- `app` exposes the [OpenAPI specification](http://localhost:8080/v3/api-docs) and [Swagger UI](http://localhost:8080/swagger-ui/index.html#/) 
 
 #### Sonar Scanner
 

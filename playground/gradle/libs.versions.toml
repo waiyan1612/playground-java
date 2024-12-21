@@ -1,11 +1,12 @@
 [versions]
-springBoot = "3.3.4"
+springBoot = "3.4.1"
 postgres = "42.7.4"
 mapstruct = "1.6.2"
 sonarqube = "5.1.0.4882"
 flyway = "10.19.0"
 junit = "5.11.2"
 mockito = "5.14.1"
+springdoc = "2.7.0"
 
 [libraries]
 
@@ -27,6 +28,8 @@ mockito-junit = { module = "org.mockito:mockito-junit-jupiter" }
 
 mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
 mapstruct-processor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
+
+spring-doc = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
 
 ## For Flyway Plugin
 flyway-postgres = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }

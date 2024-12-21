@@ -7,6 +7,7 @@ plugins {
 tasks.jacocoTestReport {
     reports {
         xml.required = true
+        html.required = true
     }
 }
 
