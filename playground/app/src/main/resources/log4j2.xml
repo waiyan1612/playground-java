@@ -4,6 +4,7 @@
         <Console name="ConsoleApp" target="SYSTEM_OUT" follow="true">
             <JsonTemplateLayout eventTemplateUri="classpath:EcsLayout.json">
                 <EventTemplateAdditionalField key="log.group" value="app"/>
+                <!-- Everything from MDC is automatically injected. traceID and spanId are predefined MDC keys. request_id is our custom key from RequestIdFilter -->
             </JsonTemplateLayout>
         </Console>
     </Appenders>

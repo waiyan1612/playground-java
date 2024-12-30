@@ -22,10 +22,15 @@ dependencies {
         }
     }
 
+    // For JSON Log layout
+    runtimeOnly("org.apache.logging.log4j:log4j-layout-template-json")
+
+    // For Docs
     implementation(libs.spring.doc)
 
-    // For JSON layout
-    runtimeOnly("org.apache.logging.log4j:log4j-layout-template-json")
+    // For Telemetry
+    implementation(libs.micrometer.bridge)
+    implementation(libs.otel.exporter)
 
     implementation(libs.mapstruct)
     annotationProcessor(libs.mapstruct.processor)
