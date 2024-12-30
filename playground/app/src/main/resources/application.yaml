@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: playground-java
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5433/playground
@@ -8,6 +10,14 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
 
 logging:
 #  config: classpath:log4j2-local.xml

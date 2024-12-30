@@ -1,6 +1,5 @@
 plugins {
-    java
-    jacoco
+    id("playground.testing-conventions")
     id("org.sonarqube")
 }
 

@@ -3,6 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
 
 plugins {
     id("playground.java-conventions")
+    jacoco
 }
 
 tasks.test {

@@ -1,0 +1,19 @@
+name: 'playground-java'
+services:
+  jaeger:
+    image: "jaegertracing/jaeger:${JAEGER_VERSION}"
+    command: ["--config", "/etc/jaeger/config.yaml"]
+    volumes:
+      - "$HOST_JAEGER_DIR/config.yaml:/etc/jaeger/config.yaml"
+    ports:
+      - "${JAEGER_WEB_PORT}:16686"
+      - "${JAEGER_GRPC_PORT}:4317"
+      - "${JAEGER_HTTP_PORT}:4318"
+
+  prometheus:
+    image: "prom/prometheus:${PROMETHEUS_VERSION}"
+    command: ["--config.file=/etc/prometheus/prometheus.yaml", "--log.level=debug"]
+    volumes:
+      - "$HOST_PROMETHEUS_DIR/prometheus.yaml:/etc/prometheus/prometheus.yaml"
+    ports:
+      - "${PROMETHEUS_PORT}:9090"
