@@ -4,7 +4,7 @@ postgres = "42.7.4"
 mapstruct = "1.6.2"
 sonarqube = "5.1.0.4882"
 flyway = "10.19.0"
-junit = "5.11.2"
+junit = "5.11.4"
 mockito = "5.14.1"
 springdoc = "2.7.0"
 
