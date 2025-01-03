@@ -38,4 +38,5 @@ dependencies {
     runtimeOnly(libs.postgres)
 
     testImplementation(libs.spring.boot.test)
+    testImplementation(libs.h2)
 }

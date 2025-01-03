@@ -1,5 +1,7 @@
 # playground-java
 
+[![CI](https://github.com/waiyan1612/playground-java/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/waiyan1612/playground-java/actions/workflows/ci.yaml)
+
 A playground to quickly run java POCs. The stack includes
 - SpringBoot
 - Flyway for schema migration
