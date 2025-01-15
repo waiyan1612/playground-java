@@ -10,8 +10,6 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - playground/*
 
 jobs:
   gradle-tests:
