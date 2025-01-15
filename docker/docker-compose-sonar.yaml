@@ -20,7 +20,7 @@ services:
       retries: 20
 
   sonarqube-init:
-    image: "alpine/curl:8.9.1"
+    image: "alpine/curl:8.10.0"
     command: ["/init/set-up-sonarqube.sh"]
     volumes:
       - "$HOST_SONAR_INIT_DIR:/init"
