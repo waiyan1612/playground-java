@@ -16,3 +16,7 @@ services:
       - "$HOST_PG_DIR/conf:/etc/postgresql"
       - "$HOST_PG_DIR/init:/docker-entrypoint-initdb.d"
     command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+  cache:
+    image: "valkey/valkey:${VALKEY_VERSION}"
+    ports:
+      - "${VALKEY_PORT}:6379"

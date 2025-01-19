@@ -21,6 +21,7 @@ dependencies {
             replacedBy("org.springframework.boot:spring-boot-starter-log4j2", "Use Log4j2 instead of Logback")
         }
     }
+    implementation(libs.valkey)
 
     // For JSON Log layout
     runtimeOnly("org.apache.logging.log4j:log4j-layout-template-json")

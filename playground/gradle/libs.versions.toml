@@ -1,6 +1,7 @@
 [versions]
 springBoot = "3.4.1"
 postgres = "42.7.5"
+valkey = "5.3.0"
 h2 = "2.3.232"
 mapstruct = "1.6.3"
 sonarqube = "6.0.1.5171"
@@ -19,6 +20,7 @@ spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test
 
 postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
+valkey = { module = "io.valkey:valkey-java", version.ref = "valkey" }
 
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api"}

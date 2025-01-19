@@ -1,5 +1,8 @@
 package com.example.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class TextFormatterService {
     public String strikeThrough(String text) {
         char [] charArr = text.toCharArray();

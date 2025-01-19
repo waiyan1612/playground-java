@@ -13,7 +13,7 @@ A playground to quickly run java POCs. The stack includes
 
 1. Launch the accompanying containers. 
     ```bash
-    ## Launch only postgres
+    ## Launch only postgres and valkey
     docker compose -f docker/docker-compose.yaml up
     
     ## Launch all containers. 

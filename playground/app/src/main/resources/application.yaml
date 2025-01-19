@@ -11,6 +11,14 @@ spring:
     hibernate:
       ddl-auto: none
 
+cache:
+  valkey:
+    cluster:
+      enabled: false
+    nodes:
+      - localhost:6379
+    min-idle: 16
+
 management:
   tracing:
     sampling:
