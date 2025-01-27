@@ -1,5 +1,5 @@
 [versions]
-springBoot = "3.4.1"
+springBoot = "3.4.2"
 postgres = "42.7.5"
 valkey = "5.3.0"
 h2 = "2.3.232"
