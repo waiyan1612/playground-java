@@ -44,4 +44,5 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation(libs.h2)
 
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
