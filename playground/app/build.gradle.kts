@@ -11,9 +11,12 @@ version = "0.0.1-SNAPSHOT"
 
 dependencies {
     implementation(project(":lib"))
-    implementation(libs.spring.boot.actuator)
-    implementation(libs.spring.boot.web)
-    implementation(libs.spring.boot.data.jpa)
+
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
     modules {
@@ -38,6 +41,7 @@ dependencies {
 
     runtimeOnly(libs.postgres)
 
-    testImplementation(libs.spring.boot.test)
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation(libs.h2)
+
 }

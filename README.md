@@ -91,11 +91,28 @@ We are replacing the `logback` in `app` with `log4j2`. The logging properties ar
 - [Jaeger Traces](http://localhost:16686/search) - Telemetry spans, traces and logs are collected by Jaeger and persisted in a trace storage.  
 - [Jaeger Monitor](http://localhost:16686/monitor) - Jaeger is also [configured](docker/.jaeger/config.yaml) to generate the metrics from the spans and to be scrapable from [Prometheus](http://localhost:9090). As such, There is no need for the springboot app to expose a metrics endpoint.
 
+Tracing can be toggled via `management.tracing.enabled` in [application.yaml](playground/app/src/main/resources/application.yaml).
+
+---
+
+## Authentication and Authorization
+
+- A SecurityFilterChain is defined in the [SecurityConfig](playground/app/src/main/java/com/example/config/SecurityConfig.java) class with the following settings.
+  - CSRF disabled.
+  - CORS enabled for all ports on localhost.
+- Two authentication methods are configured.
+  - OAuth2 authentication using JWT - A dummy implementation that will return `sub:admin@jwt` for _any_ bearer token.
+  - Basic authentication defined in [application.yaml](playground/app/src/main/resources/application.yaml).
+    - `spring.security.user.name` - `admin@basic`
+    - `spring.security.user.password` - `admin`
+- The example use of `@PreAuthorize` can be found in the [HiController](playground/app/src/main/java/com/example/controller/HiController.java) class.
+
 ---
 
 ## API Documentation
 
-- `app` exposes the [OpenAPI specification](http://localhost:8080/v3/api-docs) and [Swagger UI](http://localhost:8080/swagger-ui/index.html#/).
+- `app` exposes [Swagger UI](http://localhost:8080/swagger-ui/index.html#/) following the [OpenAPI specifications](http://localhost:8080/v3/api-docs).
+- OpenAPI related configs are defined in the [OpenApiConfig](playground/app/src/main/java/com/example/config/OpenApiConfig.java) bean.
 
 ---
 

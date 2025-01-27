@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: local
   application:
     name: playground-java
   datasource:
@@ -6,10 +8,13 @@ spring:
     url: jdbc:postgresql://localhost:5433/playground
     username: application
     password: application
-
   jpa:
     hibernate:
       ddl-auto: none
+  security:
+    user:
+      name: admin@basic
+      password: admin
 
 cache:
   valkey:
@@ -20,7 +25,12 @@ cache:
     min-idle: 16
 
 management:
+  endpoints:
+    web:
+      # Change /actuator endpoints to /. (e.g. /actuator/health -> /health)
+      base-path: /
   tracing:
+    enabled: true
     sampling:
       probability: 1.0
   otlp:
@@ -28,5 +38,8 @@ management:
       endpoint: http://localhost:4318/v1/traces
 
 logging:
-#  config: classpath:log4j2-local.xml
   config: classpath:log4j2.xml
+  level:
+    org:
+      springframework:
+        security: INFO
