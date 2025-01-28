@@ -4,6 +4,7 @@
 
 A playground to quickly run java POCs. The stack includes
 - SpringBoot
+- Valkey as an in-memory cache
 - Flyway for schema migration
 - OpenAPI and SwaggerUI
 - OpenTelemetry (requires [jaeger](https://github.com/jaegertracing/jaeger) containers)
@@ -131,7 +132,7 @@ Tracing can be toggled via `management.tracing.enabled` in [application.yaml](pl
     ```bash 
     ./gradlew lib:test lib:jacocoTestReport lib:sonar
     ```
-It's also recommended to install the `sonar-lint` plugin if it's available for your IDE.
+It's also recommended to install the [SonarQube / sonarlint](https://github.com/SonarSource/sonarlint-intellij) plugin if it's available for your IDE.
 
 ---
 

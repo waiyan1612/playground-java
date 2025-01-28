@@ -1,9 +1,9 @@
-package com.example.service;
+package com.example.hello.service;
 
-import com.example.dto.HelloDto;
-import com.example.entity.HelloEntity;
+import com.example.hello.model.HelloEntity;
+import com.example.hello.model.HelloResponse;
+import com.example.hello.repository.HelloRepository;
 import com.example.mapper.PlaygroundMapper;
-import com.example.repository.HelloRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +19,8 @@ public class HelloService {
         this.playgroundMapper = playgroundMapper;
     }
 
-    public HelloDto greet(String lang) {
+    public HelloResponse greet(String lang) {
         HelloEntity helloEntity = helloRepository.findMessageByLang(lang);
-        return playgroundMapper.helloEntityToHelloDto(helloEntity);
+        return playgroundMapper.entityToResponse(helloEntity);
     }
 }

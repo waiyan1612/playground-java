@@ -1,7 +1,7 @@
-package com.example.controller;
+package com.example.hello.controller;
 
-import com.example.dto.HelloDto;
-import com.example.service.HelloService;
+import com.example.hello.model.HelloResponse;
+import com.example.hello.service.HelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +24,10 @@ public class HelloController {
     }
 
     @GetMapping("/{lang}")
-    public HelloDto getByLanguage(@PathVariable(value = "lang") String lang) {
+    public HelloResponse getByLanguage(@PathVariable(value = "lang") String lang) {
         log.info("Received greeting request for {}", lang);
-        HelloDto helloDto = helloService.greet(lang);
-        log.info("Greeting in {} is {}", helloDto.getLanguage(), helloDto.getMessage());
-        return helloDto;
+        HelloResponse helloResponse = helloService.greet(lang);
+        log.info("Greeting in {} is {}", helloResponse.language(), helloResponse.message());
+        return helloResponse;
     }
 }
