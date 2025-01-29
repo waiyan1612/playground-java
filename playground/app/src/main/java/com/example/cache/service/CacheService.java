@@ -2,6 +2,7 @@ package com.example.cache.service;
 
 import com.example.cache.model.CacheRequest;
 import com.example.cache.model.CacheResponse;
+import com.example.exception.NotFoundException;
 import io.valkey.JedisPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,9 @@ public class CacheService {
 
     public CacheResponse getStringKey(String key) {
         String value = pool.getResource().get(key);
+        if (value == null) {
+            throw new NotFoundException("Key not found in cache: " + key);
+        }
         long expires = pool.getResource().expireTime(key);
         Optional<Long> optExpires = expires < 0 ? Optional.empty() : Optional.of(expires);
         return new CacheResponse(key, value, optExpires);

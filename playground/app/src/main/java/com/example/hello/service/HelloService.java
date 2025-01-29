@@ -1,5 +1,6 @@
 package com.example.hello.service;
 
+import com.example.exception.NotFoundException;
 import com.example.hello.model.HelloEntity;
 import com.example.hello.model.HelloResponse;
 import com.example.hello.repository.HelloRepository;
@@ -21,6 +22,9 @@ public class HelloService {
 
     public HelloResponse greet(String lang) {
         HelloEntity helloEntity = helloRepository.findMessageByLang(lang);
+        if (helloEntity == null) {
+            throw new NotFoundException("No greetings found for " + lang);
+        }
         return playgroundMapper.entityToResponse(helloEntity);
     }
 }
