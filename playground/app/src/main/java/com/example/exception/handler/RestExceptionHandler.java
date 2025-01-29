@@ -20,7 +20,7 @@ import static org.springframework.http.HttpStatus.*;
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(RestExceptionHandler.class);
+    private final Logger log = LoggerFactory.getLogger(RestExceptionHandler.class);
 
     // Used by ProblemDetail.type (https://datatracker.ietf.org/doc/html/rfc9457).
     // Recommended (but not required) that it be a URL that provides human-readable documentation about the problem.
@@ -31,7 +31,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({org.springframework.security.access.AccessDeniedException.class})
     protected ProblemDetail handle403(Exception exception, WebRequest webRequest) {
-        LOGGER.warn("{} is forbidden to access {}",
+        log.warn("{} is forbidden to access {}",
                 Objects.requireNonNull(webRequest.getUserPrincipal()).getName(),
                 ((ServletWebRequest)webRequest).getRequest().getRequestURI()
         );
@@ -40,19 +40,19 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({jakarta.persistence.EntityNotFoundException.class, com.example.exception.NotFoundException.class})
     protected ProblemDetail handle404(Exception exception, WebRequest webRequest) {
-        LOGGER.warn(exception.getMessage(), exception);
+        log.warn(exception.getMessage(), exception);
         return generateProblemDetail(NOT_FOUND, exception.getMessage(), webRequest);
     }
 
     @ExceptionHandler({Exception.class})
     protected ProblemDetail handle500(Exception exception, WebRequest webRequest) {
-        LOGGER.error(exception.getMessage(), exception);
+        log.error(exception.getMessage(), exception);
         return generateProblemDetail(INTERNAL_SERVER_ERROR, exception.getMessage(), webRequest);
     }
 
     @ExceptionHandler({com.example.exception.NotImplementedException.class})
     protected ProblemDetail handle501(Exception exception, WebRequest webRequest) {
-        LOGGER.error(exception.getMessage(), exception);
+        log.error(exception.getMessage(), exception);
         return generateProblemDetail(NOT_IMPLEMENTED, exception.getMessage(), webRequest);
     }
 
@@ -63,7 +63,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
             case FORBIDDEN -> problem.setType(PROBLEM_DETAIL_FORBIDDEN);
             case INTERNAL_SERVER_ERROR -> problem.setType(PROBLEM_DETAIL_INTERNAL);
             case NOT_IMPLEMENTED -> problem.setType(PROBLEM_DETAIL_NOT_IMPLEMENTED);
-            default -> LOGGER.debug("No URI found for {}", status);
+            default -> log.debug("No URI found for {}", status);
         }
         problem.setInstance(URI.create(((ServletWebRequest)webRequest).getRequest().getRequestURI()));
         problem.setProperty("timestamp", Instant.now());
