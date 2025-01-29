@@ -98,7 +98,7 @@ Tracing can be toggled via `management.tracing.enabled` in [application.yaml](pl
 
 ## Authentication and Authorization
 
-- A SecurityFilterChain is defined in the [SecurityConfig](playground/app/src/main/java/com/example/config/SecurityConfig.java) class with the following settings.
+- A SecurityFilterChain is defined in the [SecurityConfig](playground/app/src/main/java/com/example/playground/base/config/SecurityConfig.java) class with the following settings.
   - CSRF disabled.
   - CORS enabled for all ports on localhost.
 - Two authentication methods are configured.
@@ -106,7 +106,7 @@ Tracing can be toggled via `management.tracing.enabled` in [application.yaml](pl
   - Basic authentication defined in [application.yaml](playground/app/src/main/resources/application.yaml).
     - `spring.security.user.name` - `admin@basic`
     - `spring.security.user.password` - `admin`
-- The example use of `@PreAuthorize` can be found in the [HiController](playground/app/src/main/java/com/example/controller/HiController.java) class.
+- The example use of `@PreAuthorize` can be found in the [HiController](playground/app/src/main/java/com/example/playground/hello/controller/HiController.java) class.
 
 ---
 
@@ -132,7 +132,7 @@ Tracing can be toggled via `management.tracing.enabled` in [application.yaml](pl
     ```bash 
     ./gradlew lib:test lib:jacocoTestReport lib:sonar
     ```
-It's also recommended to install the [SonarQube / sonarlint](https://github.com/SonarSource/sonarlint-intellij) plugin if it's available for your IDE.
+It's also recommended to install the [SonarQube / SonarLint](https://github.com/SonarSource/sonarlint-intellij) plugin if it's available for your IDE.
 
 ---
 
