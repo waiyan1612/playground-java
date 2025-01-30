@@ -33,29 +33,33 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({org.springframework.security.access.AccessDeniedException.class})
     protected ProblemDetail handle403(Exception exception, WebRequest webRequest) {
-        log.warn("{} is forbidden to access {}",
-                Objects.requireNonNull(webRequest.getUserPrincipal()).getName(),
-                ((ServletWebRequest)webRequest).getRequest().getRequestURI()
-        );
-        return generateProblemDetail(FORBIDDEN, "", webRequest);
+        ProblemDetail problemDetail = generateProblemDetail(FORBIDDEN, "", webRequest);
+        log.warn("{}", problemDetail);
+        return problemDetail;
     }
 
     @ExceptionHandler({jakarta.persistence.EntityNotFoundException.class, NotFoundException.class})
     protected ProblemDetail handle404(Exception exception, WebRequest webRequest) {
         log.warn(exception.getMessage(), exception);
-        return generateProblemDetail(NOT_FOUND, exception.getMessage(), webRequest);
+        ProblemDetail problemDetail = generateProblemDetail(NOT_FOUND, exception.getMessage(), webRequest);
+        log.warn("{}", problemDetail);
+        return problemDetail;
     }
 
     @ExceptionHandler({Exception.class})
     protected ProblemDetail handle500(Exception exception, WebRequest webRequest) {
         log.error(exception.getMessage(), exception);
-        return generateProblemDetail(INTERNAL_SERVER_ERROR, exception.getMessage(), webRequest);
+        ProblemDetail problemDetail = generateProblemDetail(INTERNAL_SERVER_ERROR, exception.getMessage(), webRequest);
+        log.error("{}", problemDetail);
+        return problemDetail;
     }
 
     @ExceptionHandler({NotImplementedException.class})
     protected ProblemDetail handle501(Exception exception, WebRequest webRequest) {
         log.error(exception.getMessage(), exception);
-        return generateProblemDetail(NOT_IMPLEMENTED, exception.getMessage(), webRequest);
+        ProblemDetail problemDetail = generateProblemDetail(NOT_IMPLEMENTED, exception.getMessage(), webRequest);
+        log.error("{}", problemDetail);
+        return problemDetail;
     }
 
     private ProblemDetail generateProblemDetail(HttpStatus status, String detail, WebRequest webRequest) {
@@ -68,7 +72,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
             default -> log.debug("No URI found for {}", status);
         }
         problem.setInstance(URI.create(((ServletWebRequest)webRequest).getRequest().getRequestURI()));
-        problem.setProperty("timestamp", Instant.now());
+        problem.setProperty("ts_ms", Instant.now());
+        problem.setProperty("user", Objects.requireNonNull(webRequest.getUserPrincipal()).getName());
         return problem;
     }
 }

@@ -110,6 +110,15 @@ Tracing can be toggled via `management.tracing.enabled` in [application.yaml](pl
 
 ---
 
+## Aspect
+
+- AOP has been implemented around the controllers to log API requests and responses.
+- Implementation can be found in the [AuditAspect](playground/app/src/main/java/com/example/playground/base/aspect/AuditAspect.java) class. 
+  - It will hook into any beam ending with `Controller` under the package `com.example.playground`.
+  - `@Before` / `@Around` annotations are used to control when we want the aspect to trigger.
+ 
+---
+
 ## API Documentation
 
 - `app` exposes [Swagger UI](http://localhost:8080/swagger-ui/index.html#/) following the [OpenAPI specifications](http://localhost:8080/v3/api-docs).
