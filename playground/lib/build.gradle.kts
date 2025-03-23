@@ -19,6 +19,7 @@ dependencies {
     testImplementation(platform(libs.junit.bom))
     testImplementation(libs.junit.api)
     testRuntimeOnly(libs.junit.engine)
+    testRuntimeOnly(libs.junit.platform.launcher)
 
     testImplementation(platform(libs.mockito.bom))
     testImplementation(libs.mockito.core)
