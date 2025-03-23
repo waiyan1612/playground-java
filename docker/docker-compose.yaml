@@ -1,7 +1,7 @@
 name: 'playground-java'
 services:
   db:
-    image: "postgres:${POSTGRES_VERSION}"
+    image: "postgres:17"
     ports:
       - "${POSTGRES_PORT}:5432"
     environment:
@@ -17,6 +17,6 @@ services:
       - "$HOST_PG_DIR/init:/docker-entrypoint-initdb.d"
     command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
   cache:
-    image: "valkey/valkey:${VALKEY_VERSION}"
+    image: "valkey/valkey:8"
     ports:
       - "${VALKEY_PORT}:6379"

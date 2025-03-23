@@ -3,7 +3,7 @@ services:
   sonarqube:
     build:
       dockerfile_inline: |
-        FROM sonarqube:${SONAR_VERSION}
+        FROM sonarqube:10.7-community
         USER root
         RUN apt-get update && apt-get -y install jq
         USER sonarqube
