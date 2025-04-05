@@ -1,7 +1,7 @@
 name: 'playground-java'
 services:
   jaeger:
-    image: "jaegertracing/jaeger:2.1.0"
+    image: "jaegertracing/jaeger:2.5.0"
     command: ["--config", "/etc/jaeger/config.yaml"]
     volumes:
       - "$HOST_JAEGER_DIR/config.yaml:/etc/jaeger/config.yaml"
