@@ -8,7 +8,7 @@ guava = "33.4.7-jre"
 sonarqube = "6.0.1.5171"
 flyway = "11.3.3"
 junit = "5.12.2"
-mockito = "5.16.1"
+mockito = "5.17.0"
 springdoc = "2.8.6"
 
 [libraries]
