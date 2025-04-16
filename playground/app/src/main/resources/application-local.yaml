@@ -1,3 +1,12 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        # Not required since we have set the logging in log4j.xml
+        # show_sql: true
+        # Pretty-print SQL in multiline
+        format_sql: false
+
 management:
   tracing:
     enabled: false
