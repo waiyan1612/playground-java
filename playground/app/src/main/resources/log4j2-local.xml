@@ -4,13 +4,27 @@
         <Property name="DATE_TIME_FORMAT_PATTERN">yyyy/MM/dd HH:mm:ss.SSS</Property>
         <!-- traceID and spanId are predefined MDC keys. requestId is our custom key from RequestIdFilter -->
         <Property name="APP_LOG_PATTERN">%d{${DATE_TIME_FORMAT_PATTERN}} %p [req_%X{requestId}] [trace_%X{traceId},span_%X{spanId}] [%t] [%c{1}] %m %throwable%n</Property>
+        <Property name="APP_LOG_PATTERN_CONCISE">%d{HH:mm} [%c] %m %throwable%n</Property>
     </Properties>
     <Appenders>
         <Console name="ConsoleApp" target="SYSTEM_OUT" follow="true">
             <PatternLayout pattern="${sys:APP_LOG_PATTERN}"/>
+<!--            <PatternLayout pattern="${sys:APP_LOG_PATTERN_CONCISE}"/>-->
         </Console>
     </Appenders>
     <Loggers>
+        <!-- Hibernate SQL logs -->
+        <Logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleApp"/>
+        </Logger>
+        <!-- Hibernate Prepared Statement Logs -->
+        <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="trace" additivity="false">
+            <AppenderRef ref="ConsoleApp"/>
+        </Logger>
+        <!-- Hibernate Param Binding Logs -->
+        <Logger name="org.hibernate.orm.jdbc.bind" level="trace" additivity="false">
+            <AppenderRef ref="ConsoleApp"/>
+        </Logger>
         <Root level="info">
             <AppenderRef ref="ConsoleApp"/>
         </Root>
