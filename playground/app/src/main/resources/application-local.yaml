@@ -1,4 +1,8 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/playground
+    username: application
+    password: application
   jpa:
     properties:
       hibernate:

@@ -26,7 +26,7 @@ public class AuthorEntity {
     // OneToOne mapping may not respect Lazy Fetch.
     // optional=false will force it to be lazy but if the other size does not have the entry, it will raise an exception.
     // See https://stackoverflow.com/a/36143746 and https://discourse.hibernate.org/t/hibernate-5-2-18-cannot-get-a-lazy-onetoone-anymore/4881/5
-    @OneToOne(mappedBy = "author", fetch = FetchType.LAZY, optional = false,
+    @OneToOne(mappedBy = "author", fetch = FetchType.LAZY, optional = true,
             cascade = CascadeType.ALL, orphanRemoval = true)
     private AuthorBioEntity bio;
 

@@ -47,6 +47,9 @@ Other commonly used commands.
 FLYWAY_CLEAN_DISABLED=false ./gradlew app:flywayClean
 ```    
 
+### Running the java app via Docker 
+Check out [build-and-run-container.sh](build-and-run-container.sh).
+
 ---
 
 ## Contents
