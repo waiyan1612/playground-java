@@ -128,6 +128,12 @@ See [Hibernate notes](hibernate.md).
 
 ---
 
+## Valkey
+
+See [Valkey notes](valkey.md).
+
+---
+
 ## API Documentation
 
 - `app` exposes [Swagger UI](http://localhost:8080/swagger-ui/index.html#/) following the [OpenAPI specifications](http://localhost:8080/v3/api-docs).
