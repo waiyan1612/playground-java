@@ -1,4 +1,4 @@
-FROM amazoncorretto:24
+FROM amazoncorretto:25
 
 ARG JAR_PATH
 RUN test -n "$JAR_PATH" || (echo "JAR_PATH not provided" && false)
