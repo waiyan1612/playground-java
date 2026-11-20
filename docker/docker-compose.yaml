@@ -1,7 +1,7 @@
 name: 'playground-java'
 services:
   db:
-    image: "postgres:18"
+    image: "postgres:19"
     ports:
       - "${POSTGRES_PORT}:5432"
     environment:
